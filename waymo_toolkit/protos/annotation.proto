@@ -1,0 +1,35 @@
+syntax = "proto2";
+
+package waymo.extractor;
+
+import "waymo_extractor/protos/label.proto";
+import "waymo_extractor/protos/dataset.proto";
+
+message Annotation {
+    // This context is the same for all frames belong to the same driving run
+    // segment. Use context.name to identify frames belong to the same driving
+    // segment. We do not store all frames from one driving segment in one proto
+    // to avoid huge protos.
+    optional Context context = 1;
+  
+    // Frame start time, which is the timestamp of the first top lidar spin
+    // within this frame.
+    optional int64 timestamp_micros = 2;
+    // The vehicle pose.
+    optional Transform pose = 3;
+
+    repeated Label laser_labels = 6;
+    // Lidar labels (laser_labels) projected to camera images. A projected
+    // label is the smallest image axis aligned rectangle that can cover all
+    // projected points from the 3d lidar label. The projected label is ignored if
+    // the projection is fully outside a camera image. The projected label is
+    // clamped to the camera image if it is partially outside.
+    repeated CameraLabels projected_lidar_labels = 9;
+    // NOTE: if a camera identified by CameraLabels.name has an entry in this
+    // field, then it has been labeled, even though it is possible that there are
+    // no labeled objects in the corresponding image, which is identified by a
+    // zero sized CameraLabels.labels.
+    repeated CameraLabels camera_labels = 8;
+    // No label zones in the *global* frame.
+    repeated Polygon2dProto no_label_zones = 7;
+  }
