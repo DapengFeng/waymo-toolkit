@@ -47,6 +47,7 @@ After the above steps, you can see the script will generate the following folder
 |   |---laser_r (range)
 |   |---laser_i (intensity)
 |   |---laser_e (elongation)
+|   |---label
 |   |---split.txt
 |---validation
 |   |--- the same as training
