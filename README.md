@@ -1,5 +1,5 @@
 # Waymo-Toolkit
-This is a toolkit for extracting elements (e.g. images, lasers and labels, which modified from offical [dataset.proto](https://github.com/waymo-research/waymo-open-dataset/blob/master/waymo_open_dataset/dataset.proto) defination to [annotation.proto](https://github.com/DapengFeng/waymo-toolkit/blob/master/waymo-toolkit/protos/annotation.proto)) from [Waymo Open Dataset](https://waymo.com/open) and visualizing the extracted images, laser points and labels with [OpenCV](https://opencv.org
+This is a toolkit for extracting elements (e.g. images, lasers and labels, which modified from offical [dataset.proto](https://github.com/waymo-research/waymo-open-dataset/blob/master/waymo_open_dataset/dataset.proto) defination to [annotation.proto](https://github.com/DapengFeng/waymo-toolkit/blob/master/waymo_toolkit/protos/annotation.proto)) from [Waymo Open Dataset](https://waymo.com/open) and visualizing the extracted images, laser points and labels with [OpenCV](https://opencv.org
 ) and [Mayavi](http://docs.enthought.com/mayavi/mayavi/)
 
 ## Installation
