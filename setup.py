@@ -29,7 +29,7 @@ setup(
     name="waymo_toolkit",
     version=get_version(),
     author="DapengFeng",
-    url="https://github.com/DapengFeng/waymo_toolkit",
+    url="https://github.com/DapengFeng/waymo-toolkit",
     description="Extract the elements from waymo dataset",
     packages=find_packages(),
     python_requires=">=3.6",
