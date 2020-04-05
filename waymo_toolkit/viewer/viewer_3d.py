@@ -161,12 +161,11 @@ class Viewer3D:
 
             if self._reduce:
                 plane_path = os.path.join(self._plane_dir, "{}.txt".format(filename))
-                if not os.path.isfile(plane_path):
-                    continue
-                plane = np.loadtxt(plane_path, dtype=np.float32)
-                mask = self._reduce(pcl, plane, 0.1)
-                pcl = pcl[mask]
-                pcl_r = pcl_r[mask]
+                if os.path.isfile(plane_path):
+                    plane = np.loadtxt(plane_path, dtype=np.float32)
+                    mask = self._reduce(pcl, plane, 0.1)
+                    pcl = pcl[mask]
+                    pcl_r = pcl_r[mask]
 
             anno = Annotation()
             anno.ParseFromString(open(label_path, "rb").read())
