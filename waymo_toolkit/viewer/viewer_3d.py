@@ -19,7 +19,7 @@ class Viewer3D:
         self._current = 0
         self._reduce = args.reduce
 
-    def _reduce(self, pcl: np.ndarray, plane: np.ndarray, threshold: float) -> np.ndarray:
+    def _keep(self, pcl: np.ndarray, plane: np.ndarray, threshold: float) -> np.ndarray:
         z_min = np.percentile(pcl[:, -1], 10)
         z_max = np.percentile(pcl[:, -1], 90)
         z_mask = np.logical_and(pcl[:, -1] > z_min, pcl[:, -1] < z_max)
@@ -163,7 +163,7 @@ class Viewer3D:
                 plane_path = os.path.join(self._plane_dir, "{}.txt".format(filename))
                 if os.path.isfile(plane_path):
                     plane = np.loadtxt(plane_path, dtype=np.float32)
-                    mask = self._reduce(pcl, plane, 0.1)
+                    mask = self._keep(pcl, plane, 0.1)
                     pcl = pcl[mask]
                     pcl_r = pcl_r[mask]
 
