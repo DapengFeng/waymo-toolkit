@@ -1,9 +1,9 @@
 syntax = "proto2";
 
-package waymo.extractor;
+package waymo.toolkit;
 
-import "waymo_extractor/protos/label.proto";
-import "waymo_extractor/protos/dataset.proto";
+import "waymo_toolkit/protos/label.proto";
+import "waymo_toolkit/protos/dataset.proto";
 
 message Annotation {
     // This context is the same for all frames belong to the same driving run

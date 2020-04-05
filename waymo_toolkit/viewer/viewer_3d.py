@@ -12,10 +12,22 @@ class Viewer3D:
         self._label_dir = os.path.join(self._base_dir, "label")
         self._laser_dir = os.path.join(self._base_dir, "laser")
         self._laser_r_dir = os.path.join(self._base_dir, "laser_r")
+        self._plane_dir = os.path.join(self._base_dir, "plane")
         self._files = [
             _.replace(".bin", "") for _ in os.listdir(self._laser_dir) if _.endswith("bin")
         ]
         self._current = 0
+        self._reduce = args.reduce
+
+    def _reduce(self, pcl: np.ndarray, plane: np.ndarray, threshold: float) -> np.ndarray:
+        z_min = np.percentile(pcl[:, -1], 10)
+        z_max = np.percentile(pcl[:, -1], 90)
+        z_mask = np.logical_and(pcl[:, -1] > z_min, pcl[:, -1] < z_max)
+        pcla = np.ones((len(pcl), 4), dtype=np.float32)
+        pcla[:, :3] = pcl
+        plane_mask = np.abs(pcla @ plane) > threshold
+        mask = np.logical_and(z_mask, plane_mask)
+        return mask
 
     def _plot_point_cloud(self, pcl: np.ndarray, pcl_r: np.ndarray, labels) -> None:
         radius = 0.05
@@ -27,7 +39,7 @@ class Viewer3D:
             # (pcl_r[:, 0] % 85.0) / 85.0,
             pcl[:, 2],
             mode="point",
-            colormap="spectral",
+            colormap="jet",
             scale_factor=100,
             line_width=10,
             figure=mlab.figure(bgcolor=(0, 0, 0), size=(1920, 1080)),
@@ -146,6 +158,15 @@ class Viewer3D:
 
             pcl = np.fromfile(laser_path, dtype=np.float32).reshape(-1, 3)
             pcl_r = np.fromfile(laser_r_path, dtype=np.float32).reshape(-1, 1)
+
+            if self._reduce:
+                plane_path = os.path.join(self._plane_dir, "{}.txt".format(filename))
+                if not os.path.isfile(plane_path):
+                    continue
+                plane = np.loadtxt(plane_path, dtype=np.float32)
+                mask = self._reduce(pcl, plane, 0.1)
+                pcl = pcl[mask]
+                pcl_r = pcl_r[mask]
 
             anno = Annotation()
             anno.ParseFromString(open(label_path, "rb").read())

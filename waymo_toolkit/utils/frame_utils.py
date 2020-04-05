@@ -1,6 +1,5 @@
 import numpy as np
 import tensorflow as tf
-
 from waymo_open_dataset import dataset_pb2
 from waymo_open_dataset.utils import range_image_utils, transform_utils
 

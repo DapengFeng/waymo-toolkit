@@ -1,6 +1,6 @@
 import argparse
 
-from waymo_extractor.viewer import Viewer2D, Viewer3D
+from waymo_toolkit.viewer import Viewer2D, Viewer3D
 
 
 def main():
@@ -10,6 +10,7 @@ def main():
     )
     parser.add_argument("--image", action="store_true", help="whether to show image")
     parser.add_argument("--laser", action="store_true", help="whether to show laser")
+    parser.add_argument("--reduce", action="store_true", help="whether to show reduce laser")
     parser.add_argument("-s", "--step", default=1, help="the step for visualize the data", type=int)
     parser.add_argument(
         "-c", "--camera", default=0, help="the camera for visualize the data", type=int

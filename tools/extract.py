@@ -4,8 +4,8 @@ import os
 import numpy as np
 import tensorflow as tf
 
-from waymo_extractor.extractor import ImageExtractor, LabelExtractor, LaserExtractor
-from waymo_extractor.utils.logger import setup_logger
+from waymo_toolkit.extractor import ImageExtractor, LabelExtractor, LaserExtractor
+from waymo_toolkit.utils.logger import setup_logger
 
 logger = setup_logger("extractor")
 

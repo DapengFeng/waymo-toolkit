@@ -33,7 +33,7 @@ setup(
     description="Extract the elements from waymo dataset",
     packages=find_packages(),
     python_requires=">=3.6",
-    install_requires=["waymo-open-dataset-tf-2-1-0", "tabulate", "matplotlib",],
+    install_requires=["waymo-open-dataset-tf-2-1-0", "opencv-python",],
     extras_require={
         "all": ["shapely", "psutil"],
         "dev": ["flake8", "isort", "black==19.10b0", "flake8-bugbear", "flake8-comprehensions"],

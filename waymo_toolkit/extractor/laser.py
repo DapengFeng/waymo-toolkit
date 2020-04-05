@@ -2,11 +2,11 @@ import os
 
 import numpy as np
 import tensorflow as tf
+from waymo_open_dataset.utils.frame_utils import parse_range_image_and_camera_projection
 
 from waymo_extractor.protos import dataset_pb2 as open_dataset
 from waymo_extractor.utils.frame_utils import convert_range_image_to_point_cloud
 from waymo_extractor.utils.logger import setup_logger
-from waymo_open_dataset.utils.frame_utils import parse_range_image_and_camera_projection
 
 from .extractor import Extractor
 

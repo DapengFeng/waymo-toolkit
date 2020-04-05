@@ -6,7 +6,8 @@ This is a toolkit for extracting elements (e.g. images, lasers and labels, which
 ```
 git clone https://github.com/DapengFeng/waymo-toolkit.git
 cd waymo-toolkit
-conda create -n waymo-toolkit python=3.7 vtk mayavi opencv
+conda create -n waymo-toolkit python=3.7 vtk mayavi tabulate matplotlib numba scipy
+conda activate waymo-toolkit
 python setup.py install
 ```
 

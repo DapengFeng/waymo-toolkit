@@ -5,9 +5,9 @@ import cv2
 import matplotlib.cm
 import numpy as np
 
-from waymo_extractor.protos.annotation_pb2 import Annotation
-from waymo_extractor.utils.box_utils import get_3d_box_projected_corners
-from waymo_extractor.utils.calibration import get_image_transform
+from waymo_toolkit.protos.annotation_pb2 import Annotation
+from waymo_toolkit.utils.box_utils import get_3d_box_projected_corners
+from waymo_toolkit.utils.calibration import get_image_transform
 
 cmap = matplotlib.cm.get_cmap("jet")
 
@@ -97,7 +97,7 @@ class Viewer2D:
         pcl_r = pcl_r[mask]
 
         # Colour code the points based on distance.
-        coloured_intensity = 255 * cmap((pcl_r[:, 0] % 20.0) / 20.0)
+        coloured_intensity = 255 * cmap((pcl_r[:, 0] % 85.0) / 85.0)
 
         # Draw a circle for each point.
         for i in range(pcl_cp.shape[0]):

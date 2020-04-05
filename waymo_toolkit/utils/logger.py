@@ -7,9 +7,9 @@ import os
 import sys
 from collections import Counter
 
-from termcolor import colored
-
 from tabulate import tabulate
+
+from termcolor import colored
 
 
 class _ColorfulFormatter(logging.Formatter):
