@@ -3,7 +3,7 @@ import os
 import numpy as np
 from mayavi import mlab
 
-from waymo_extractor.protos.annotation_pb2 import Annotation
+from waymo_toolkit.protos.annotation_pb2 import Annotation
 
 
 class Viewer3D:
