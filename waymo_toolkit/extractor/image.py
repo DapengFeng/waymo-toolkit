@@ -4,8 +4,8 @@ import cv2
 import numpy as np
 import tensorflow as tf
 
-from waymo_extractor.protos import dataset_pb2 as open_dataset
-from waymo_extractor.utils.logger import setup_logger
+from waymo_toolkit.protos import dataset_pb2 as open_dataset
+from waymo_toolkit.utils.logger import setup_logger
 
 from .extractor import Extractor
 

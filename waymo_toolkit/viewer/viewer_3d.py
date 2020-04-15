@@ -21,8 +21,7 @@ class Viewer3D:
 
     def _keep(self, pcl: np.ndarray, plane: np.ndarray, threshold: float) -> np.ndarray:
         z_min = np.percentile(pcl[:, -1], 10)
-        z_max = np.percentile(pcl[:, -1], 90)
-        z_mask = np.logical_and(pcl[:, -1] > z_min, pcl[:, -1] < z_max)
+        z_mask = pcl[:, -1] > z_min
         pcla = np.ones((len(pcl), 4), dtype=np.float32)
         pcla[:, :3] = pcl
         plane_mask = np.abs(pcla @ plane) > threshold

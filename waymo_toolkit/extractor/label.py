@@ -2,8 +2,8 @@ import os
 
 import tensorflow as tf
 
-from waymo_extractor.protos import annotation_pb2 as annotation
-from waymo_extractor.utils.logger import setup_logger
+from waymo_toolkit.protos import annotation_pb2 as annotation
+from waymo_toolkit.utils.logger import setup_logger
 
 from .extractor import Extractor
 
